@@ -26,8 +26,8 @@ def sort_by_date(lists_of_data: list[dict[str, Any]], reverse_list: bool = True)
     return sorted_list
 
 
-function_filter_by_state = filter_by_state(lists_of_data)  # вызов 1 функции
+function_filter_by_state = filter_by_state(lists_of_data)  # вызов 1 функции.
 print(function_filter_by_state)
 
-function_sort_by_date = sort_by_date(lists_of_data)  # вызeов 2 функции
+function_sort_by_date = sort_by_date(lists_of_data)  # вызов 2 функции.
 print(function_sort_by_date)
