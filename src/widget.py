@@ -24,12 +24,7 @@ def get_date(data_information: str) -> str:  # из "2024-03-11T02:26:18.671407"
     return f'{data_information[8:10]}.{data_information[5:7]}.{data_information[0:4]}'
 
 
-get_card = str(input('Введите наименование и номер карты.')).lower()
-data_information = str(input('Введите дату'))
+#get_card = str(input('Введите наименование и номер карты.')).lower()
+#data_information = str(input('Введите дату'))
 
 
-mask_account = mask_account_card(get_card)  # вызов функции
-print(mask_account)
-
-date_info = get_date(data_information)  # вызов функции
-print(date_info)

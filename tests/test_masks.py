@@ -1,8 +1,9 @@
 import pytest
-import sys
-sys.path.append('/Users/alinadavydenko/PycharmProjects/pythonProject7/src')
 from src.masks import get_mask_card_number
 from src.masks import get_mask_account
+import sys
+sys.path.append('/Users/alinadavydenko/PycharmProjects/pythonProject7/src')
+
 
 # тестирование функций
 # тестирование get_mask_card_number
