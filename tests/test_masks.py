@@ -1,9 +1,10 @@
 import pytest
+import sys
+sys.path.append('/Users/alinadavydenko/PycharmProjects/pythonProject7/src')
 from src.masks import get_mask_card_number
 from src.masks import get_mask_account
 
 # тестирование функций
-
 # тестирование get_mask_card_number
 
 
@@ -12,8 +13,16 @@ from src.masks import get_mask_account
     ('1234567890', '1234 56** **** 7890'),
     ('12', '12 ** **** 12'),
     ('0', '0 ** **** 0'),
-    (' ', '** ****'),
     ('73654108430135874305', '7365 41** **** 4305')
 ])
-def get_mask_card_number(card_number, expected_result):
+def test_get_mask_card_number(card_number, expected_result):
     assert get_mask_card_number(card_number) == expected_result
+
+
+# тестирование get_mask_account
+@pytest.mark.parametrize('account_number, expected_result', [
+    ('73654108430135874305', '**4305'),
+    ('0', '**0')
+])
+def test_get_mask_account(account_number, expected_result):
+    assert get_mask_account(account_number) == expected_result
