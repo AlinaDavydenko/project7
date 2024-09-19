@@ -1,6 +1,7 @@
-# модуль для размещения декораторов
 from datetime import time
+
 from functools import wraps
+
 from typing import Any, Callable
 
 
@@ -8,11 +9,11 @@ def log(filename: Any) -> Callable:  # создаём будущий декор�
     """ запись вызова функции и её результат в файл или в консоль """
     def timer(func):  # определяем функцию подсчёта времени исполнения функции
         @wraps(func)
-        def wrapper(*args, **kwargs):
-            result = func(*args, **kwargs)
+        def wrapper(*args: Any, **kwargs: Any):
+            result = None
             try:
                 time_1 = time()
-                result = sum(args)
+                result = func(*args, **kwargs)
                 time_2 = time()
                 if filename:
                     with open(filename, 'a', encoding='utf-8') as file:
@@ -22,9 +23,9 @@ def log(filename: Any) -> Callable:  # создаём будущий декор�
             except Exception as e:
                 if filename:
                     with open(filename, 'a', encoding='utf-8') as file:
-                        file.write(f'my function error: {e}. Input: {args}, {kwargs}')
+                        file.write(f'my function error: {e}. Input: {args}, {kwargs}\n')
                 else:
-                    print(f'my function error: {e}. Input: {args}, {kwargs}')
+                    print(f'my function error: {e}. Input: {args}, {kwargs}\n')
             return result
         return wrapper
     return timer
@@ -36,6 +37,6 @@ def my_function(x: int, y: int) -> int:
     return x+y
 
 
-a = my_function(x=5, y=8)
-print(a)
-
+# вызов функции
+my_func = my_function(x=5, y=2)
+print(my_func)
